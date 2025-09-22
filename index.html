@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Variant Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="credit">Made By smelly0.</div>
+  
+  <div class="app">
+    <aside>
+      <h1>⚙️ Smelly's Chat Varient Thing!</h1>
+      <div class="group">
+        <label><span>Max variants (don't do more then 1000!)</span><input id="maxVariants" type="number" min="1" max="200000" value="50"></label>
+        <label><span>Max substitutions / char</span><input id="maxPerChar" type="number" min="1" max="12" value="4"></label>
+        <label><span>Max separators inserted</span><input id="maxSeps" type="number" min="0" max="3" value="2"></label>
+        <label><span>Seed (big variants only also it don't work gng)</span><input id="seed" type="number" value="0"></label>
+      </div>
+      <div class="group">
+        <label><span>Leet digits/symbols</span><input id="useLeet" type="checkbox" class="switch" checked></label>
+        <label><span>Homoglyphs</span><input id="useHomo" type="checkbox" class="switch" checked></label>
+        <label><span>Case permutations</span><input id="useCase" type="checkbox" class="switch" checked></label>
+        <label><span>Work in progress</span><input id="useDia" type="checkbox" class="switch" checked></label>
+        <label><span>Duplicates</span><input id="useDup" type="checkbox" class="switch" checked></label>
+        <label><span>Don't use! pc will explode</span><input id="useOmit" type="checkbox" class="switch" checked></label>
+        <label><span>Vowel drop</span><input id="useVow" type="checkbox" class="switch" checked></label>
+        <label><span>Transpose neighbors</span><input id="useTrans" type="checkbox" class="switch" checked></label>
+        <label><span>Keyboard-neighbor typos</span><input id="useKeys" type="checkbox" class="switch" checked></label>
+        <label><span>Phonetic rewrites</span><input id="usePhon" type="checkbox" class="switch" checked></label>
+        <label><span>Random prefixes/suffixes</span><input id="useAff" type="checkbox" class="switch" checked></label>
+      </div>
+      <div class="group">
+        <label><span class="warn">Allow risky terms (N-word Pass)</span><input id="allowRisk" type="checkbox" class="switch"></label>
+        <div class="sub">Safety: When off it wont let u say slurs u dirty racist (also I couldnt get this to work)</div>
+      </div>
+      <div class="footer">
+        <div>Press <span class="kbd">Enter</span> to generate</div>
+        <div class="badge" id="stageCount">stages: —</div>
+      </div>
+    </aside>
+    <main>
+      <div class="topbar">
+        <input id="word" class="pill" type="search" placeholder="Type a word… e.g., hello" autocomplete="off" />
+        <div class="btns">
+          <button id="btnGen" class="primary">Generate</button>
+          <button id="btnClear">Clear</button>
+          <button id="btnCopy">Copy all</button>
+          <button id="btnCSV">Download CSV</button>
+          <button id="btnJSON">Download JSON</button>
+        </div>
+        <div class="status" id="status">Ready</div>
+      </div>
+      <div class="statbar" aria-label="progress"><div id="bar"></div></div>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:120px">#</th>
+            <th>Variant</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+
+      <div class="footer">
+        <span id="counts" class="badge">0 shown</span>
+        <span class="sub">Tip: use fewer features or lower caps if it feels slow.</span>
+        <a href="https://discord.com/users/779808711102431243" target="_blank" class="credit">Made By smelly0.</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

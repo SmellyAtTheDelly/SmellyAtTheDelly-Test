@@ -1,0 +1,88 @@
+:root{
+  --bg:#0b0f14;--panel:#111824;--panel-2:#0e1520;--acc:#5eead4;--acc-2:#93c5fd;--text:#e5eef9;--muted:#94a3b8;--danger:#f87171;--ok:#34d399;--border:#1f2a3a;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#0a0f1a);color:var(--text);font:14px/1.4 system-ui,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"}
+.app{display:grid;grid-template-columns:280px 1fr;gap:14px;height:100vh;padding:14px}
+aside{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px;overflow:auto}
+main{background:var(--panel-2);border:1px solid var(--border);border-radius:14px;padding:14px;display:flex;flex-direction:column;min-width:0}
+h1{font-size:18px;margin:0 0 8px;letter-spacing:0.3px}
+.sub{color:var(--muted);font-size:12px}
+.group{border:1px dashed var(--border);border-radius:12px;padding:10px}
+label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:6px 0}
+input[type="text"],input[type="number"],input[type="search"],.pill{
+  width:100%;background:#0b1220;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px;outline:none
+}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+button{background:linear-gradient(180deg,#102033,#0d1a2b);border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:10px;cursor:pointer}
+button.primary{background:linear-gradient(180deg,#0f2b3a,#0e2235);border-color:#14445a;box-shadow:0 0 0 1px rgba(94,234,212,.15) inset}
+button.primary:hover{box-shadow:0 0 0 2px rgba(94,234,212,.28) inset}
+button:disabled{opacity:.6;cursor:not-allowed}
+.switch{appearance:none;width:38px;height:22px;border-radius:999px;background:#1b2a3d;position:relative;border:1px solid var(--border);outline:none;cursor:pointer}
+.switch:checked{background:#0f3c3b;border-color:#0e5b59}
+.switch:before{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#cbd5e1;left:3px;top:2px;transition:transform .15s}
+.switch:checked:before{transform:translateX(16px);background:#a7f3d0}
+.statbar{height:8px;background:#0d1422;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.statbar>div{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc-2));width:0}
+.topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topbar .pill{flex:1}
+.status{margin-left:auto;font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+th,td{border-bottom:1px dashed var(--border);padding:8px 6px;text-align:left}
+tbody{display:block;max-height:55vh;overflow:auto;border:1px solid var(--border);border-radius:10px}
+thead, tbody tr{display:table;width:100%;table-layout:fixed}
+.badge{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.warn{color:var(--danger)}
+.ok{color:var(--ok)}
+.footer{margin-top:auto;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:8px}
+.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0b1220;border:1px solid var(--border);padding:2px 6px;border-radius:6px}
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(270deg, #1e3a8a, #1e40af, #0f172a);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+  font-family: system-ui, sans-serif;
+  color: #e5eef9;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.credit {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #5eead4, #3b82f6);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite, floaty 4s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(0,0,0,0.5);
+  cursor: pointer;
+  text-decoration: none;
+  transition: text-shadow 0.3s ease;
+}
+
+.credit:hover {
+  text-shadow: 0 0 18px rgba(94, 234, 212, 0.8), 0 0 28px rgba(59, 130, 246, 0.6);
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
