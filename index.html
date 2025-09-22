@@ -1,77 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Word Variant Generator</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smelly — Packs • 2D Art • Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <div class="credit">Made By smelly0.</div>
-  
-  <div class="app">
-    <aside>
-      <h1>⚙️ Smelly's Chat Varient Thing!</h1>
-      <div class="group">
-        <label><span>Max variants (don't do more then 1000!)</span><input id="maxVariants" type="number" min="1" max="200000" value="50"></label>
-        <label><span>Max substitutions / char</span><input id="maxPerChar" type="number" min="1" max="12" value="4"></label>
-        <label><span>Max separators inserted</span><input id="maxSeps" type="number" min="0" max="3" value="2"></label>
-        <label><span>Seed (big variants only also it don't work gng)</span><input id="seed" type="number" value="0"></label>
-      </div>
-      <div class="group">
-        <label><span>Leet digits/symbols</span><input id="useLeet" type="checkbox" class="switch" checked></label>
-        <label><span>Homoglyphs</span><input id="useHomo" type="checkbox" class="switch" checked></label>
-        <label><span>Case permutations</span><input id="useCase" type="checkbox" class="switch" checked></label>
-        <label><span>Work in progress</span><input id="useDia" type="checkbox" class="switch" checked></label>
-        <label><span>Duplicates</span><input id="useDup" type="checkbox" class="switch" checked></label>
-        <label><span>Don't use! pc will explode</span><input id="useOmit" type="checkbox" class="switch" checked></label>
-        <label><span>Vowel drop</span><input id="useVow" type="checkbox" class="switch" checked></label>
-        <label><span>Transpose neighbors</span><input id="useTrans" type="checkbox" class="switch" checked></label>
-        <label><span>Keyboard-neighbor typos</span><input id="useKeys" type="checkbox" class="switch" checked></label>
-        <label><span>Phonetic rewrites</span><input id="usePhon" type="checkbox" class="switch" checked></label>
-        <label><span>Random prefixes/suffixes</span><input id="useAff" type="checkbox" class="switch" checked></label>
-      </div>
-      <div class="group">
-        <label><span class="warn">Allow risky terms (N-word Pass)</span><input id="allowRisk" type="checkbox" class="switch"></label>
-        <div class="sub">Safety: When off it wont let u say slurs u dirty racist (also I couldnt get this to work)</div>
-      </div>
-      <div class="footer">
-        <div>Press <span class="kbd">Enter</span> to generate</div>
-        <div class="badge" id="stageCount">stages: —</div>
-      </div>
-    </aside>
-    <main>
-      <div class="topbar">
-        <input id="word" class="pill" type="search" placeholder="Type a word… e.g., hello" autocomplete="off" />
-        <div class="btns">
-          <button id="btnGen" class="primary">Generate</button>
-          <button id="btnClear">Clear</button>
-          <button id="btnCopy">Copy all</button>
-          <button id="btnCSV">Download CSV</button>
-          <button id="btnJSON">Download JSON</button>
-        </div>
-        <div class="status" id="status">Ready</div>
-      </div>
-      <div class="statbar" aria-label="progress"><div id="bar"></div></div>
-
-      <table>
-        <thead>
-          <tr>
-            <th style="width:120px">#</th>
-            <th>Variant</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-
-      <div class="footer">
-        <span id="counts" class="badge">0 shown</span>
-        <span class="sub">Tip: use fewer features or lower caps if it feels slow.</span>
-        <a href="https://discord.com/users/779808711102431243" target="_blank" class="credit">Made By smelly0.</a>
-      </div>
-    </main>
+<body oncontextmenu="return false">
+<header>
+  <div class="nav">
+    <div class="brand"><span class="dot"></span> Smelly • Portfolio</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">My Projects</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <script src="script.js"></script>
+<main>
+  <section class="hero">
+    <div class="card reveal hero-left">
+    <div class="hero-decor aurora" aria-hidden="true"></div>
+    <div class="hero-decor neon" aria-hidden="true"></div><h1 class="hero-title block-build grad-title-xl stacked">
+  <span class="line">Texture Packs <span class="dot-sep">•</span></span>
+  <span class="line">Pack Manager <span class="dot-sep">•</span></span>
+  <span class="line">2D Artist <span class="dot-sep">•</span></span>
+  <span class="line">Minecraft Builder <span class="dot-sep">•</span></span>
+</h1>
+<p class="lead hero-lead">
+  I make <strong>clean, performant packs</strong> for Java &amp; Bedrock, manage pipelines (Geyser mappings),
+  design crisp <strong>textures</strong>, and build immersive spaces.
+</p>
+<div class="badges badges-animated">
+  <span class="badge pill-pop">ItemsAdder • ForcePack</span>
+  <span class="badge pill-pop">Geyser • Floodgate</span>
+  <span class="badge pill-pop">Blockbench • Pixel Art</span>
+  <span class="badge pill-pop">Paper 1.21.x</span>
+</div>
+<div class="cta cta-glow">
+  <a class="btn btn-primary" href="#projects"><span>See Projects</span></a>
+  <a class="btn secondary btn-ghost" href="#contact"><span>Contact</span></a>
+</div></div>
+  <div class="card reveal hero-right">
+      <div class="char-wrap">
+        <img src="images/skin.png" alt="Minecraft skin" class="skin" loading="lazy" />
+        <div class="skin-shadow"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <h2 class="title grad-title">About <span class="sparkle" aria-hidden="true">✦</span></h2>
+    <p class="sub big-sub">I’m <strong>Smelly</strong> — I make packs and art that look clean, read fast in PvP, and don’t wreck FPS.<br>
+    Here’s the <em>long</em> version.:</p>
+
+    <ul class="about-pills">
+      <li>
+        <span class="pill-icon">🎨</span>
+        <div class="pill-text">
+          <strong>Texture packs</strong> <small>(JSONs, CMD)</small> — tidy palettes, organized paths, correct pack_format, model parents, trims. Java ↔ Bedrock naming stays consistent.
+        </div>
+      </li>
+      <li>
+        <span class="pill-icon">🧭</span>
+        <div class="pill-text">
+          <strong>Bedrock management</strong> — .geo & attachables, texture atlases, render controllers, and clean folders so Geyser mappings line up with Java/CMD.
+        </div>
+      </li>
+      <li>
+        <span class="pill-icon">🗡️</span>
+        <div class="pill-text">
+          <strong>2D art</strong> — icons, tags, menus, weapons, armor, and store graphics; crisp outlines and exports.
+        </div>
+      </li>
+      <li>
+        <span class="pill-icon">🏰</span>
+        <div class="pill-text">
+          <strong>Builds</strong> — hubs, small PvP arenas, and event/KOTH spots with clean routes and sightlines.
+        </div>
+      </li>
+    </ul>
+</section>
+
+  <section id="skills" class="reveal">
+    <h2 class="title">Skills</h2>
+    <div class="badges">
+      <span class="badge">Texture Packs</span>
+      <span class="badge">Pack Management</span>
+      <span class="badge">2D Artist</span>
+      <span class="badge">Minecraft Builder</span>
+      <span class="badge">Fulltime Racist</span>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <div class="banner">
+      <strong>My Projects</strong>
+      <div class="sub">Condensed wall of recent icons & textures. Animated overlays deter simple screenshots.</div>
+    </div>
+    <div class="projects" id="projectsGrid"></div>
+  </section>
+
+  <section id="gallery" class="reveal">
+    <h2 class="title">Gallery</h2>
+    <p class="sub">A roomier view of the same works.</p>
+    <div class="gallery" id="galleryGrid"></div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2 class="title">Contact</h2>
+    <div class="contact">
+      <div class="card">
+        <h3>Discord</h3>
+        <p class="sub">Click to copy my handle.</p>
+        <button class="btn" id="copyDiscord" data-copy="@smelly0.">@smelly0.</button>
+      </div>
+      <div class="card">
+        <h3>Minecraft</h3>
+        <div class="badges"><span class="badge">Ssmelly</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog id="lightbox">
+  <img id="lightImg" alt="Artwork" />
+  <div class="lb-over" aria-hidden="true"></div>
+  <div class="lb-wm" aria-hidden="true">
+    <div class="lb-wm-gradient"></div>
+    <div class="lb-wm-track" id="lbTrack">
+      <span class="lb-wm-line">Ssmelly</span>
+    </div>
+  </div>
+</dialog>
+
+<footer class="footer">© <span id="year"></span> Smelly0.</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
