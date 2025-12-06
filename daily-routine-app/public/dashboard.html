@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Routine - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <div class="header-left">
+        <h1 class="app-title">Daily Routine</h1>
+        <div id="motivational-text" class="text-muted"></div>
+      </div>
+      <div class="user-info">
+        <div class="user-avatar" id="user-avatar"></div>
+        <div>
+          <div id="user-name" style="font-weight: 600;"></div>
+          <div id="user-role" class="text-muted" style="font-size: 0.75rem;"></div>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="logout-btn">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Mood Selector -->
+    <div class="mood-selector">
+      <div class="mood-title">How are you feeling today?</div>
+      <div class="mood-emojis">
+        <button class="mood-emoji" data-emoji="😁">😁</button>
+        <button class="mood-emoji" data-emoji="🙂">🙂</button>
+        <button class="mood-emoji" data-emoji="😐">😐</button>
+        <button class="mood-emoji" data-emoji="😕">😕</button>
+        <button class="mood-emoji" data-emoji="😢">😢</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-section="dashboard">Dashboard</button>
+      <button class="nav-tab" data-section="routines">Routines</button>
+      <button class="nav-tab" data-section="habits">Habits</button>
+      <button class="nav-tab" data-section="feed">Support Feed</button>
+      <button class="nav-tab" data-section="admin" id="admin-tab" style="display: none;">Admin</button>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard-section" class="section active">
+      <div class="grid grid-2">
+        <!-- Today's Tasks -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Today's Tasks</h3>
+            <button class="btn btn-primary btn-sm" id="add-task-btn">+ Add Task</button>
+          </div>
+          <div id="tasks-list" class="task-list"></div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="card">
+          <h3 class="card-title mb-lg">Today's Progress</h3>
+          <div id="stats-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Routines Section -->
+    <div id="routines-section" class="section">
+      <div class="flex-between mb-lg">
+        <h2>My Routines</h2>
+        <button class="btn btn-primary" id="add-routine-btn">+ Add Routine</button>
+      </div>
+      <div id="routines-grid" class="routine-grid"></div>
+    </div>
+
+    <!-- Habits Section -->
+    <div id="habits-section" class="section">
+      <div class="flex-between mb-lg">
+        <h2>Habit Tracker</h2>
+        <button class="btn btn-primary" id="add-habit-btn">+ Add Habit</button>
+      </div>
+      <div id="habits-list" class="habit-list"></div>
+    </div>
+
+    <!-- Feed Section -->
+    <div id="feed-section" class="section">
+      <h2 class="mb-lg">Support Feed</h2>
+      <div id="feed-list" class="feed-list"></div>
+    </div>
+
+    <!-- Admin Section -->
+    <div id="admin-section" class="section">
+      <h2 class="mb-lg">Admin Panel</h2>
+      <div id="admin-content"></div>
+    </div>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="task-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Task</h3>
+        <button class="modal-close" id="close-task-modal">×</button>
+      </div>
+      <form id="task-form">
+        <div class="form-group">
+          <label class="form-label" for="task-title">Title</label>
+          <input type="text" id="task-title" class="form-input" required placeholder="What needs to be done?">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="task-notes">Notes (optional)</label>
+          <textarea id="task-notes" class="form-textarea" placeholder="Add any details..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="task-category">Category</label>
+          <select id="task-category" class="form-select">
+            <option value="Personal">Personal</option>
+            <option value="Routine">Routine</option>
+            <option value="Work">Work</option>
+            <option value="School">School</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="task-date">Due Date</label>
+          <input type="date" id="task-date" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Add Task</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Routine Modal -->
+  <div id="routine-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Routine</h3>
+        <button class="modal-close" id="close-routine-modal">×</button>
+      </div>
+      <form id="routine-form">
+        <div class="form-group">
+          <label class="form-label" for="routine-name">Routine Name</label>
+          <input type="text" id="routine-name" class="form-input" required placeholder="Morning Routine">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Routine</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Habit Modal -->
+  <div id="habit-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Habit</h3>
+        <button class="modal-close" id="close-habit-modal">×</button>
+      </div>
+      <form id="habit-form">
+        <div class="form-group">
+          <label class="form-label" for="habit-title">Habit Title</label>
+          <input type="text" id="habit-title" class="form-input" required placeholder="Drink 8 glasses of water">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Habit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Routine Task Modal -->
+  <div id="routine-task-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add Task to <span id="routine-task-routine-name"></span></h3>
+        <button class="modal-close" id="close-routine-task-modal">×</button>
+      </div>
+      <form id="routine-task-form">
+        <input type="hidden" id="routine-task-routine-id">
+        <div class="form-group">
+          <label class="form-label" for="routine-task-title">Task Title</label>
+          <input type="text" id="routine-task-title" class="form-input" required placeholder="Brush teeth">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="routine-task-reminder">Reminder Time (optional)</label>
+          <input type="time" id="routine-task-reminder" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Add Task</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
